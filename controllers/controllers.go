@@ -101,6 +101,7 @@ func HandlerSetSession(c echo.Context) error {
 	}
 
 	utils.Produce(m)
+
 	return c.JSON(http.StatusOK, result)
 }
 

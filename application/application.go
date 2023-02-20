@@ -3,9 +3,10 @@ package application
 import (
 	"crud-echo/config"
 	"crud-echo/routes"
-	gotenv "github.com/subosito/gotenv"
-	"log"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
+	gotenv "github.com/subosito/gotenv"
 )
 
 func init() {
@@ -17,8 +18,8 @@ func StartApp() {
 		Addr:    addr,
 		Handler: routes.Routes(),
 	}
-	log.Println("Your service is up and running at " + addr)
+	log.Info("Your service is up and running at ", addr)
 	if err := s.ListenAndServe(); err != http.ErrServerClosed {
-		log.Fatal(err)
+		log.Error(err)
 	}
 }
