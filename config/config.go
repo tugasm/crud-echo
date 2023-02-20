@@ -4,11 +4,11 @@ import (
 	"github.com/caarlos0/env"
 	"github.com/joho/godotenv"
 	"github.com/rs/zerolog/log"
-
+	// "crud-echo/models"
 )
 
 type Database struct {
-    Name     string `env:"DB_SCHEMA"`
+  Name     string `env:"DB_SCHEMA"`
 	Adapter  string `env:"DB_DRIVER"`
 	Host     string `env:"DB_HOST"`
 	Port     string `env:"DB_PORT"`
@@ -30,8 +30,14 @@ func loadConfig() (err error){
     if err != nil{
         log.Warn().Msg("Cannot find .env file. OS Environments will be used")
     }
+
     err = env.Parse(&Config)
+		if err != nil{
+			log.Warn().Msg("Web Server not working")
+		}
+		
     err = env.Parse(&Config.db)
+
     return err
 
 }
@@ -41,4 +47,6 @@ func init(){
     if err != nil{
         panic(err)
     }
+
+		ConnectDB()
 }

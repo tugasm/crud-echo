@@ -1,13 +1,14 @@
 package config
 
 import (
+	"crud-echo/models"
 	"fmt"
 	"log"
 	"time"
 
-	"github.com/jinzhu/gorm"
-    "crud-echo/models"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	// "database/sql"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var db *gorm.DB
@@ -19,12 +20,12 @@ func ConnectDB() *gorm.DB {
 
 	var err error
 	dbConfig := Config.db
-	fmt.Printf("%s:%s@tcp(%s:%s)/%s?parseTime=true", dbConfig.UserDB, dbConfig.Password, dbConfig.Host, dbConfig.Port, dbConfig.Name)
+	// fmt.Printf("%s:%s@tcp(%s:%s)/%s?parseTime=true", dbConfig.UserDB, dbConfig.Password, dbConfig.Host, dbConfig.Port, dbConfig.Name)
 
 	if dbConfig.Adapter == "postgres" {
-		db, err = gorm.Open(
-		"postgres",
-		fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable", dbConfig.UserDB, dbConfig.Password, dbConfig.Host, dbConfig.Name))
+		config := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", dbConfig.Host, dbConfig.UserDB, dbConfig.Password, dbConfig.Name, dbConfig.Port)
+		dsn := config
+		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 		log.Println("Connected to Database Local postgressql")
 	}
 
@@ -34,15 +35,24 @@ func ConnectDB() *gorm.DB {
 	} else {
 		log.Println("SUCCESS CONNECT TO DATABASE")
 	}
+	sqldb, err := db.DB()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+
+	pingDb := func (db *gorm.DB)  {
+		sqldb.Ping()
+	}
 
 	go doEvery(6*time.Minute, pingDb, db)
-
+	
 	// Database Pooling
-// 	db.DB().SetMaxIdleConns(20)
-// 	db.DB().SetMaxOpenConns(200)
-// 	db.DB().SetConnMaxLifetime(45 * time.Second)
+	sqldb.SetMaxIdleConns(20)
+	sqldb.SetMaxOpenConns(200)
+	sqldb.SetConnMaxLifetime(45 * time.Second)
 
-    models.InitTableCustomer(db)
+  models.InitTableCustomer(db)
 
 	return db
 }
@@ -50,14 +60,5 @@ func ConnectDB() *gorm.DB {
 func doEvery(d time.Duration, f func(*gorm.DB), y *gorm.DB) {
 	for _ = range time.Tick(d) {
 		f(y)
-	}
-}
-
-func pingDb(db *gorm.DB) {
-	log.Println("PING CONNECTION")
-	err := db.DB().Ping()
-	if err != nil {
-		log.Println("PING CONNECTION FAILURE")
-		return
 	}
 }

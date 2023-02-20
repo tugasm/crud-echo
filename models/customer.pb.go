@@ -25,9 +25,11 @@ type Customer struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id    string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name  string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Id     int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name   string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email  string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Alamat string `protobuf:"bytes,4,opt,name=alamat,proto3" json:"alamat,omitempty"`
+	Nohp   int64  `protobuf:"varint,5,opt,name=nohp,proto3" json:"nohp,omitempty"`
 }
 
 func (x *Customer) Reset() {
@@ -62,11 +64,11 @@ func (*Customer) Descriptor() ([]byte, []int) {
 	return file_customer_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Customer) GetId() string {
+func (x *Customer) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *Customer) GetName() string {
@@ -83,18 +85,144 @@ func (x *Customer) GetEmail() string {
 	return ""
 }
 
+func (x *Customer) GetAlamat() string {
+	if x != nil {
+		return x.Alamat
+	}
+	return ""
+}
+
+func (x *Customer) GetNohp() int64 {
+	if x != nil {
+		return x.Nohp
+	}
+	return 0
+}
+
+type Session struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id      int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Session string `protobuf:"bytes,2,opt,name=session,proto3" json:"session,omitempty"`
+}
+
+func (x *Session) Reset() {
+	*x = Session{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_customer_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Session) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Session) ProtoMessage() {}
+
+func (x *Session) ProtoReflect() protoreflect.Message {
+	mi := &file_customer_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Session.ProtoReflect.Descriptor instead.
+func (*Session) Descriptor() ([]byte, []int) {
+	return file_customer_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Session) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Session) GetSession() string {
+	if x != nil {
+		return x.Session
+	}
+	return ""
+}
+
+type ErrorCust struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Kode    int32  `protobuf:"varint,2,opt,name=kode,proto3" json:"kode,omitempty"`
+}
+
+func (x *ErrorCust) Reset() {
+	*x = ErrorCust{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_customer_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ErrorCust) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ErrorCust) ProtoMessage() {}
+
+func (x *ErrorCust) ProtoReflect() protoreflect.Message {
+	mi := &file_customer_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ErrorCust.ProtoReflect.Descriptor instead.
+func (*ErrorCust) Descriptor() ([]byte, []int) {
+	return file_customer_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ErrorCust) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *ErrorCust) GetKode() int32 {
+	if x != nil {
+		return x.Kode
+	}
+	return 0
+}
+
 type ListCustomer struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List []*Customer `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List      []*Customer  `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	Session   []*Session   `protobuf:"bytes,2,rep,name=Session,proto3" json:"Session,omitempty"`
+	ErrorCust []*ErrorCust `protobuf:"bytes,3,rep,name=ErrorCust,proto3" json:"ErrorCust,omitempty"`
 }
 
 func (x *ListCustomer) Reset() {
 	*x = ListCustomer{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_customer_proto_msgTypes[1]
+		mi := &file_customer_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -107,7 +235,7 @@ func (x *ListCustomer) String() string {
 func (*ListCustomer) ProtoMessage() {}
 
 func (x *ListCustomer) ProtoReflect() protoreflect.Message {
-	mi := &file_customer_proto_msgTypes[1]
+	mi := &file_customer_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,7 +248,7 @@ func (x *ListCustomer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCustomer.ProtoReflect.Descriptor instead.
 func (*ListCustomer) Descriptor() ([]byte, []int) {
-	return file_customer_proto_rawDescGZIP(), []int{1}
+	return file_customer_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListCustomer) GetList() []*Customer {
@@ -130,20 +258,49 @@ func (x *ListCustomer) GetList() []*Customer {
 	return nil
 }
 
+func (x *ListCustomer) GetSession() []*Session {
+	if x != nil {
+		return x.Session
+	}
+	return nil
+}
+
+func (x *ListCustomer) GetErrorCust() []*ErrorCust {
+	if x != nil {
+		return x.ErrorCust
+	}
+	return nil
+}
+
 var File_customer_proto protoreflect.FileDescriptor
 
 var file_customer_proto_rawDesc = []byte{
 	0x0a, 0x0e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x12, 0x06, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x22, 0x44, 0x0a, 0x08, 0x43, 0x75, 0x73, 0x74,
-	0x6f, 0x6d, 0x65, 0x72, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x12, 0x06, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x22, 0x70, 0x0a, 0x08, 0x43, 0x75, 0x73, 0x74,
+	0x6f, 0x6d, 0x65, 0x72, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
 	0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69,
-	0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x22, 0x34,
-	0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x24,
-	0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x6d,
-	0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x04,
-	0x6c, 0x69, 0x73, 0x74, 0x42, 0x04, 0x5a, 0x02, 0x2e, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x16,
+	0x0a, 0x06, 0x61, 0x6c, 0x61, 0x6d, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
+	0x61, 0x6c, 0x61, 0x6d, 0x61, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x6f, 0x68, 0x70, 0x18, 0x05,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x6e, 0x6f, 0x68, 0x70, 0x22, 0x33, 0x0a, 0x07, 0x53, 0x65,
+	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x22,
+	0x39, 0x0a, 0x09, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x75, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6b, 0x6f, 0x64, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x6b, 0x6f, 0x64, 0x65, 0x22, 0x90, 0x01, 0x0a, 0x0c, 0x4c,
+	0x69, 0x73, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x24, 0x0a, 0x04, 0x6c,
+	0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x6d, 0x6f, 0x64, 0x65,
+	0x6c, 0x73, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x04, 0x6c, 0x69, 0x73,
+	0x74, 0x12, 0x29, 0x0a, 0x07, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e, 0x53, 0x65, 0x73, 0x73,
+	0x69, 0x6f, 0x6e, 0x52, 0x07, 0x53, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2f, 0x0a, 0x09,
+	0x45, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x75, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x11, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x75,
+	0x73, 0x74, 0x52, 0x09, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x75, 0x73, 0x74, 0x42, 0x04, 0x5a,
+	0x02, 0x2e, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -158,18 +315,22 @@ func file_customer_proto_rawDescGZIP() []byte {
 	return file_customer_proto_rawDescData
 }
 
-var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_customer_proto_goTypes = []interface{}{
 	(*Customer)(nil),     // 0: models.Customer
-	(*ListCustomer)(nil), // 1: models.ListCustomer
+	(*Session)(nil),      // 1: models.Session
+	(*ErrorCust)(nil),    // 2: models.ErrorCust
+	(*ListCustomer)(nil), // 3: models.ListCustomer
 }
 var file_customer_proto_depIdxs = []int32{
 	0, // 0: models.ListCustomer.list:type_name -> models.Customer
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 1: models.ListCustomer.Session:type_name -> models.Session
+	2, // 2: models.ListCustomer.ErrorCust:type_name -> models.ErrorCust
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_customer_proto_init() }
@@ -191,6 +352,30 @@ func file_customer_proto_init() {
 			}
 		}
 		file_customer_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Session); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_customer_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ErrorCust); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_customer_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ListCustomer); i {
 			case 0:
 				return &v.state
@@ -209,7 +394,7 @@ func file_customer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_customer_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
