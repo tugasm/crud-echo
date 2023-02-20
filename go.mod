@@ -11,6 +11,8 @@ require (
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.1 // indirect
 	github.com/rs/zerolog v1.27.0
+	github.com/sirupsen/logrus v1.9.0
+	github.com/streadway/amqp v1.0.0 // indirect
 	github.com/subosito/gotenv v1.4.0
 	github.com/unrolled/secure v1.13.0
 	golang.org/x/text v0.3.7 // indirect
