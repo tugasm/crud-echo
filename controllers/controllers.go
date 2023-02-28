@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"go.elastic.co/apm/v2"
 	"log"
 	"net/http"
 	"os"
@@ -27,7 +28,8 @@ func errorWrapper(err error, msg string) {
 }
 
 func HandlerGetCustomer(c echo.Context) error {
-
+	span, _ := apm.StartSpan(c.Request().Context(), "work", "custom")
+	defer span.End()
 	store := newPostgresStore()
 
 	session, _ := store.Get(c.Request(), SESSION_ID)
@@ -76,7 +78,8 @@ func HandlerGetCustomer(c echo.Context) error {
 }
 
 func HandlerSetSession(c echo.Context) error {
-
+	span, _ := apm.StartSpan(c.Request().Context(), "work", "custom")
+	defer span.End()
 	store := newPostgresStore()
 
 	session, _ := store.Get(c.Request(), SESSION_ID)
@@ -123,6 +126,8 @@ func newPostgresStore() *pgstore.PGStore {
 }
 
 func HandlerDeleteSession(c echo.Context) error {
+	span, _ := apm.StartSpan(c.Request().Context(), "work", "custom")
+	defer span.End()
 	store := newPostgresStore()
 
 	session, _ := store.Get(c.Request(), SESSION_ID)

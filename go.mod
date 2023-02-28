@@ -15,6 +15,8 @@ require (
 	github.com/streadway/amqp v1.0.0
 	github.com/subosito/gotenv v1.4.0
 	github.com/unrolled/secure v1.13.0
+	go.elastic.co/apm/module/apmecho/v2 v2.2.0
+	go.elastic.co/apm/v2 v2.2.0
 	google.golang.org/protobuf v1.28.1
 	gorm.io/driver/postgres v1.4.5
 	gorm.io/gorm v1.24.1

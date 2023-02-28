@@ -1,12 +1,28 @@
 # github.com/antonlindstrom/pgstore v0.0.0-20220421113606-e3a6e3fed12a
 ## explicit
 github.com/antonlindstrom/pgstore
+# github.com/armon/go-radix v1.0.0
+github.com/armon/go-radix
 # github.com/caarlos0/env v3.5.0+incompatible
 ## explicit
 github.com/caarlos0/env
 # github.com/dgrijalva/jwt-go v3.2.0+incompatible
 ## explicit
 github.com/dgrijalva/jwt-go
+# github.com/elastic/go-licenser v0.4.0
+github.com/elastic/go-licenser
+github.com/elastic/go-licenser/licensing
+# github.com/elastic/go-sysinfo v1.7.1
+github.com/elastic/go-sysinfo
+github.com/elastic/go-sysinfo/internal/registry
+github.com/elastic/go-sysinfo/providers/aix
+github.com/elastic/go-sysinfo/providers/darwin
+github.com/elastic/go-sysinfo/providers/linux
+github.com/elastic/go-sysinfo/providers/shared
+github.com/elastic/go-sysinfo/providers/windows
+github.com/elastic/go-sysinfo/types
+# github.com/elastic/go-windows v1.0.1
+github.com/elastic/go-windows
 # github.com/gorilla/securecookie v1.1.1
 github.com/gorilla/securecookie
 # github.com/gorilla/sessions v1.2.1
@@ -31,11 +47,15 @@ github.com/jackc/pgtype
 github.com/jackc/pgx/v4
 github.com/jackc/pgx/v4/internal/sanitize
 github.com/jackc/pgx/v4/stdlib
+# github.com/jcchavezs/porto v0.1.0
+github.com/jcchavezs/porto
 # github.com/jinzhu/inflection v1.0.0
 github.com/jinzhu/inflection
 # github.com/jinzhu/now v1.1.5
 ## explicit
 github.com/jinzhu/now
+# github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901
+github.com/joeshaw/multierror
 # github.com/joho/godotenv v1.4.0
 ## explicit
 github.com/joho/godotenv
@@ -57,12 +77,24 @@ github.com/lib/pq/scram
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.14
 github.com/mattn/go-isatty
+# github.com/pkg/errors v0.9.1
+github.com/pkg/errors
+# github.com/prometheus/procfs v0.7.3
+github.com/prometheus/procfs
+github.com/prometheus/procfs/internal/fs
+github.com/prometheus/procfs/internal/util
 # github.com/rs/zerolog v1.27.0
 ## explicit
 github.com/rs/zerolog
 github.com/rs/zerolog/internal/cbor
 github.com/rs/zerolog/internal/json
 github.com/rs/zerolog/log
+# github.com/santhosh-tekuri/jsonschema v1.2.4
+github.com/santhosh-tekuri/jsonschema
+github.com/santhosh-tekuri/jsonschema/decoders
+github.com/santhosh-tekuri/jsonschema/formats
+github.com/santhosh-tekuri/jsonschema/loader
+github.com/santhosh-tekuri/jsonschema/mediatypes
 # github.com/sirupsen/logrus v1.9.0
 ## explicit
 github.com/sirupsen/logrus
@@ -79,16 +111,48 @@ github.com/unrolled/secure
 github.com/valyala/bytebufferpool
 # github.com/valyala/fasttemplate v1.2.1
 github.com/valyala/fasttemplate
+# go.elastic.co/apm/module/apmecho/v2 v2.2.0
+## explicit
+go.elastic.co/apm/module/apmecho/v2
+# go.elastic.co/apm/module/apmhttp/v2 v2.2.0
+go.elastic.co/apm/module/apmhttp/v2
+# go.elastic.co/apm/v2 v2.2.0
+## explicit
+go.elastic.co/apm/v2
+go.elastic.co/apm/v2/apmconfig
+go.elastic.co/apm/v2/internal/apmcloudutil
+go.elastic.co/apm/v2/internal/apmhostutil
+go.elastic.co/apm/v2/internal/apmhttputil
+go.elastic.co/apm/v2/internal/apmlog
+go.elastic.co/apm/v2/internal/apmschema
+go.elastic.co/apm/v2/internal/apmstrings
+go.elastic.co/apm/v2/internal/apmversion
+go.elastic.co/apm/v2/internal/configutil
+go.elastic.co/apm/v2/internal/iochan
+go.elastic.co/apm/v2/internal/ringbuffer
+go.elastic.co/apm/v2/internal/wildcard
+go.elastic.co/apm/v2/model
+go.elastic.co/apm/v2/stacktrace
+go.elastic.co/apm/v2/transport
+# go.elastic.co/fastjson v1.1.0
+go.elastic.co/fastjson
 # golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
 golang.org/x/crypto/acme
 golang.org/x/crypto/acme/autocert
 golang.org/x/crypto/pbkdf2
+# golang.org/x/mod v0.5.1
+golang.org/x/mod/internal/lazyregexp
+golang.org/x/mod/modfile
+golang.org/x/mod/module
+golang.org/x/mod/semver
 # golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2
 golang.org/x/net/idna
 # golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8
+golang.org/x/sys/execabs
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
+golang.org/x/sys/windows/registry
 # golang.org/x/text v0.3.7
 golang.org/x/text/cases
 golang.org/x/text/internal
@@ -103,6 +167,21 @@ golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
 golang.org/x/text/width
+# golang.org/x/tools v0.1.9
+golang.org/x/tools/cmd/goimports
+golang.org/x/tools/go/ast/astutil
+golang.org/x/tools/internal/event
+golang.org/x/tools/internal/event/core
+golang.org/x/tools/internal/event/keys
+golang.org/x/tools/internal/event/label
+golang.org/x/tools/internal/fastwalk
+golang.org/x/tools/internal/gocommand
+golang.org/x/tools/internal/gopathwalk
+golang.org/x/tools/internal/imports
+golang.org/x/tools/internal/typeparams
+# golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+golang.org/x/xerrors
+golang.org/x/xerrors/internal
 # google.golang.org/protobuf v1.28.1
 ## explicit
 google.golang.org/protobuf/encoding/prototext
@@ -142,3 +221,5 @@ gorm.io/gorm/logger
 gorm.io/gorm/migrator
 gorm.io/gorm/schema
 gorm.io/gorm/utils
+# howett.net/plist v1.0.0
+howett.net/plist
